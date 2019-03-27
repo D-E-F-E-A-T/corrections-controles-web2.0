@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Correction controle web 2.0 - Exrcices 4</title>
+	<style type="text/css">
+		table td  {
+			padding: 5px; 
+		}
+	</style>
+</head>
+<body>
+	<fieldset>
+		<legend>Prix d'une pizza</legend>
+		<table>
+			<tr>
+				<th></th>
+				<th>Taille</th>
+				<th>Garnitures</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>Choisie pizza et Garnitures</td>
+				<td>
+					<select id="taille">
+						<option value="5">Petite 5dh</option>
+						<option value="15">Moyenne 15dh</option>
+						<option value="25">Large 25dh</option>
+					</select>
+				</td>
+				<td>
+					<select multiple="true" id="garnitures">
+						<option value="1">Garniture-1 1dh</option>
+						<option value="3">Garniture-2 3dh</option>
+						<option value="5">Garniture-3 5dh</option>
+					</select>
+				</td>
+				<td>
+					<label for="prix">Prix</label>
+					<input type="text" id="prix" placeholder="Prix">
+				</td>
+			</tr>
+		</table>	
+	</fieldset>
+
+	<script>
+		// Events 
+		var elements = document.getElementsByTagName('select');
+		for (var i = 0; i < elements.length; i++) {
+			    elements[i].addEventListener('change', function () {
+			    document.getElementById('prix').value = calcPizzaPrice();
+			});
+		}
+
+		// Functions
+		function calcPizzaPrice() {
+			var pizzaPrice = document.getElementById('taille').value;
+			var garnitures = document.getElementById('garnitures').selectedOptions;
+			for (var i = 0; i < garnitures.length; i++) {
+				pizzaPrice = parseInt(pizzaPrice) + parseInt(garnitures[i].value);
+			}
+			return pizzaPrice;
+		}
+	</script>
+</body>
+</html>
