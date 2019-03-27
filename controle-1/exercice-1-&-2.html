@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Correction controle web 2.0 - Exrcices 1 & 2</title>
+</head>
+<body>
+	<h3>Exercice 1</h3>
+	<select id="select">
+		<option value="default">Default</option>
+	</select>
+	<hr>
+	<h3>Exercice 2</h3>
+	<a href="https://www.facebook.com">https://www.facebook.com</a>
+	<br>
+	<a href="https://www.linkedin.com">https://www.linkedin.com</a>
+	<br>
+	<a href="https://www.github.com">https://www.github.com</a>
+	<br>
+	<a href="https://www.twitter.com">https://www.twitter.com</a>
+	<script>
+		// Init
+		loadSelect();
+		reverseLinks(20000);
+		
+		// Exercice 1:
+		function loadSelect() {
+			var langs = ['html', 'css', 'java', 'javascript', 'php'];
+			var targetSelect = document.getElementById('select');
+			for (var i = 0; i < langs.length; i++) {
+				var option = document.createElement("option");
+				option.text = langs[i];
+				targetSelect.add(option);
+			}
+		}
+
+		// Exercice 3:
+		function reverseLinks(intervalTime) {
+			setInterval(function () {
+				var linksElements = document.getElementsByTagName('a');
+				var links = [];
+				for (var i = 0; i < linksElements.length; i++) {
+					links.push(linksElements[i].getAttribute("href"));
+				}
+				var j = 0;
+				for (var i = links.length - 1; i >= 0; i--) {
+					linksElements[j].setAttribute("href", links[i]);
+					j++;
+				}
+			}, intervalTime);
+		}
+	</script>
+</body>
+</html>
